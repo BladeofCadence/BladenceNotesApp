@@ -12,6 +12,7 @@ import io.realm.Sort;
 import yuku.ambilwarna.AmbilWarnaDialog;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,14 +41,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         mLayout = (RelativeLayout) findViewById(R.id.mainlayout);
-        mDefaultColor = ContextCompat.getColor(MainActivity.this, R.color.white);
+        mDefaultColor = ContextCompat.getColor(MainActivity.this, R.color.bckcolor);
         ColorButton = (ImageButton) findViewById(R.id.themechange);
         ColorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openColorPicker();
             }
+
         });
+
+
 
         Realm.init(getApplicationContext());
         Realm realm = Realm.getDefaultInstance();

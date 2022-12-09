@@ -1,6 +1,7 @@
 package com.example.easytutonotes;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -8,20 +9,23 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import yuku.ambilwarna.AmbilWarnaDialog;
 
 import org.w3c.dom.Text;
 
 import java.text.DateFormat;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import io.realm.Realm;
 import io.realm.RealmResults;
+import yuku.ambilwarna.AmbilWarnaDialog;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-
     Context context;
     RealmResults<Note> notesList;
 
@@ -53,9 +57,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 realm.beginTransaction();
                 note.deleteFromRealm();
                 realm.commitTransaction();
-                Toast.makeText(context,"Note deleted",Toast.LENGTH_SHORT).show();
-                        }
-            });
+                Toast.makeText(context, "Note deleted", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -69,6 +73,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         TextView descriptionOutput;
         TextView timeOutput;
         ImageButton deleteNote;
+        ImageButton changecolor;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,6 +81,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             descriptionOutput = itemView.findViewById(R.id.descriptionoutput);
             timeOutput = itemView.findViewById(R.id.timeoutput);
             deleteNote = itemView.findViewById(R.id.deletenote);
+            changecolor = itemView.findViewById(R.id.colorchangebutton);
         }
     }
 }
