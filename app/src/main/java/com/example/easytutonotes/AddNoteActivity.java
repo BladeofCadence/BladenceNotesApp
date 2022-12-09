@@ -6,6 +6,7 @@ import io.realm.Realm;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
@@ -20,6 +21,7 @@ public class AddNoteActivity extends AppCompatActivity {
         EditText titleInput = findViewById(R.id.titleinput);
         EditText descriptionInput = findViewById(R.id.descriptioninput);
         MaterialButton saveBtn = findViewById(R.id.savebtn);
+       // ImageButton deleteNote = findViewById(R.id.deletenote);
 
 
         Realm.init(getApplicationContext());

@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,32 +45,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         String formatedTime = DateFormat.getDateTimeInstance().format(note.getCreatedTime());
         holder.timeOutput.setText(formatedTime);
 
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.deleteNote.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
-
-                PopupMenu menu = new PopupMenu(context,v);
-                menu.getMenu().add("DELETE");
-                menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem item) {
-                        if(item.getTitle().equals("DELETE")){
-                            //delete the note
-                            Realm realm = Realm.getDefaultInstance();
-                            realm.beginTransaction();
-                            note.deleteFromRealm();
-                            realm.commitTransaction();
-                            Toast.makeText(context,"Note deleted",Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                //delete the note
+                Realm realm = Realm.getDefaultInstance();
+                realm.beginTransaction();
+                note.deleteFromRealm();
+                realm.commitTransaction();
+                Toast.makeText(context,"Note deleted",Toast.LENGTH_SHORT).show();
                         }
-                        return true;
-                    }
-                });
-                menu.show();
-
-                return true;
-            }
-        });
-
+            });
     }
 
     @Override
@@ -81,12 +68,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         TextView titleOutput;
         TextView descriptionOutput;
         TextView timeOutput;
+        ImageButton deleteNote;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             titleOutput = itemView.findViewById(R.id.titleoutput);
             descriptionOutput = itemView.findViewById(R.id.descriptionoutput);
             timeOutput = itemView.findViewById(R.id.timeoutput);
+            deleteNote = itemView.findViewById(R.id.deletenote);
         }
     }
 }
