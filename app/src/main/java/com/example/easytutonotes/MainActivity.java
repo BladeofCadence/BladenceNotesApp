@@ -9,7 +9,7 @@ import io.realm.Realm;
 import io.realm.RealmChangeListener;
 import io.realm.RealmResults;
 import io.realm.Sort;
-//import yuku.ambilwarna.AmbilWarnaDialog;
+import yuku.ambilwarna.AmbilWarnaDialog;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         ColorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             //   openColorPicker();
+                openColorPicker();
             }
         });
 
@@ -69,21 +69,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-//    public void openColorPicker() {
-//        AmbilWarnaDialog colorPicker = new AmbilWarnaDialog(this, mDefaultColor, new AmbilWarnaDialog.OnAmbilWarnaListener() {
-//            @Override
-//            public void onCancel(AmbilWarnaDialog dialog) {
-//
-//            }
-//
-//            @Override
-//            public void onOk(AmbilWarnaDialog dialog, int color) {
-//                mDefaultColor = color;
-//                mLayout.setBackgroundColor(mDefaultColor);
-//            }
-//        });
-//        colorPicker.show();
-//    }
+    public void openColorPicker() {
+        AmbilWarnaDialog colorPicker = new AmbilWarnaDialog(this, mDefaultColor, new AmbilWarnaDialog.OnAmbilWarnaListener() {
+            @Override
+            public void onCancel(AmbilWarnaDialog dialog) {
+
+            }
+
+            @Override
+            public void onOk(AmbilWarnaDialog dialog, int color) {
+                mDefaultColor = color;
+                mLayout.setBackgroundColor(mDefaultColor);
+            }
+        });
+        colorPicker.show();
+    }
 
 
 }
