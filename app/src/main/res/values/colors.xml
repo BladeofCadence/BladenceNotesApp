@@ -7,5 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="bckcolor">#97F1E9</color>
+    <color name="bckcolor">#C2F8F3</color>
+    <color name="notecolor">#C2F8F3</color>
+
+    //API colors
+    <color name="Color1">#FFFFFF</color>
+    <color name="Color2">#FFFFFF</color>
+    <color name="Color3">#FFFFFF</color>
+    <color name="Color4">#FFFFFF</color>
+    <color name="Color5">#FFFFFF</color>
+
+
 </resources>

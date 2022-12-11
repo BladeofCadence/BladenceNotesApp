@@ -1,6 +1,11 @@
 package com.example.easytutonotes;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -8,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -28,8 +34,12 @@ import yuku.ambilwarna.AmbilWarnaDialog;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     Context context;
     RealmResults<Note> notesList;
+    MainActivity activity;
 
-    public MyAdapter(Context context, RealmResults<Note> notesList) {
+    int mDefaultColor;
+
+    public MyAdapter(MainActivity activity, Context context, RealmResults<Note> notesList) {
+        this.activity = activity;
         this.context = context;
         this.notesList = notesList;
     }
@@ -45,9 +55,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         Note note = notesList.get(position);
         holder.titleOutput.setText(note.getTitle());
         holder.descriptionOutput.setText(note.getDescription());
-
         String formatedTime = DateFormat.getDateTimeInstance().format(note.getCreatedTime());
         holder.timeOutput.setText(formatedTime);
+        if(note.getImage() != null)
+        {
+            Bitmap image = getImage(note.getImage());
+            Drawable d = new BitmapDrawable(context.getResources(), image);
+            holder.Rlayout.setBackground(d);
+        }
+
+
 
         holder.deleteNote.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +77,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 Toast.makeText(context, "Note deleted", Toast.LENGTH_SHORT).show();
             }
         });
+        holder.changecolor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    //openColorPicker(v, holder);
+                    MainActivity act = activity;
+                    int color;
+                    act.openColorPicker(holder.Rlayout);
+                    //Drawable drawable = holder.Rlayout.getBackground();
+                    //drawable.setTint(color);
+                }
+        });
+    }
+
+    // convert from byte array to bitmap
+    public static Bitmap getImage(byte[] image) {
+        return BitmapFactory.decodeByteArray(image, 0, image.length);
     }
 
     @Override
@@ -74,6 +107,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         TextView timeOutput;
         ImageButton deleteNote;
         ImageButton changecolor;
+        RelativeLayout Rlayout;
+        String noteColor;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -82,6 +117,28 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             timeOutput = itemView.findViewById(R.id.timeoutput);
             deleteNote = itemView.findViewById(R.id.deletenote);
             changecolor = itemView.findViewById(R.id.colorchangebutton);
+            Rlayout = itemView.findViewById(R.id.Noterl);
+
+           // noteColor = itemView.findViewById(R.id.Noterl).getBackground()
         }
     }
+
+    public void openColorPicker( @NonNull MyAdapter.MyViewHolder holder) {
+        if(holder != null)
+        {
+            AmbilWarnaDialog colorPicker = new AmbilWarnaDialog(context, mDefaultColor, new AmbilWarnaDialog.OnAmbilWarnaListener() {
+                @Override
+                public void onCancel(AmbilWarnaDialog dialog) {
+                }
+                @Override
+                public void onOk(AmbilWarnaDialog dialog, int color) {
+                    mDefaultColor = color;
+                    holder.Rlayout.setBackgroundColor(mDefaultColor);
+                }
+            });
+            if(colorPicker != null)
+                colorPicker.show();
+        }
+    }
+
 }

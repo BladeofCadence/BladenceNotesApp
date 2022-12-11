@@ -21,13 +21,6 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/addnewnotebtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:src="@android:drawable/ic_menu_edit" />
 
             <ImageButton
                 android:id="@+id/deletenote"
@@ -35,6 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:backgroundTint="#00FFFFFF"
                 android:src="@android:drawable/ic_menu_delete" />
 
             <ImageButton
@@ -44,23 +38,9 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:scaleType="centerCrop"
+                android:backgroundTint="#00FFFFFF"
                 android:src="@drawable/palette" />
 
-            <ImageButton
-                android:id="@+id/imageButton6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:src="@android:drawable/ic_delete" />
-
-            <ImageButton
-                android:id="@+id/imageButton7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:src="@android:drawable/ic_delete" />
         </LinearLayout>
     </HorizontalScrollView>
 

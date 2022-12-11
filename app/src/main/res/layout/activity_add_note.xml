@@ -7,6 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/rounded_corner"
     android:padding="20dp"
+    android:id="@+id/parent_layout"
     tools:context=".AddNoteActivity">
 
     <com.google.android.material.button.MaterialButton
@@ -19,6 +20,7 @@
         android:textColor="#4BAEA4"/>
 
     <LinearLayout
+        android:id="@+id/note_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -46,5 +48,24 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/image_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/note_linear_layout"
+        android:orientation="vertical">
+    <ImageView
+        android:id="@+id/ImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars" />
 
+    <Button
+        android:id="@+id/setImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ImageView"
+        android:text="Select Image"
+        android:textColor="@color/black" />
+    </LinearLayout>
 </LinearLayout>

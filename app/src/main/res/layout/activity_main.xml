@@ -27,36 +27,26 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
+                    android:backgroundTint="#00FFFFFF"
                     app:srcCompat="@android:drawable/ic_menu_edit" />
+
                 <ImageButton
                     android:id="@+id/themechange"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="51dp"
+                    android:layout_height="match_parent"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    app:srcCompat="@android:drawable/ic_dialog_dialer" />
-                <ImageButton
-                    android:id="@+id/imageButton5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    app:srcCompat="@android:drawable/ic_menu_gallery" />
-                <ImageButton
-                    android:id="@+id/imageButton6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    app:srcCompat="@android:drawable/ic_menu_gallery" />
-                <ImageButton
-                    android:id="@+id/imageButton7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    app:srcCompat="@android:drawable/ic_menu_gallery" />
+                    android:backgroundTint="#00FFFFFF"
+                    app:srcCompat="@drawable/palette" />
 
+                <ImageButton
+                    android:id="@+id/addImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:backgroundTint="#00FFFFFF"
+                    app:srcCompat="@android:drawable/ic_menu_gallery" />
 
 
             </LinearLayout>
@@ -69,7 +59,6 @@
         android:layout_below="@+id/scroll_view"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
-
          />
 
 </RelativeLayout>
